@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZltWLofGXkzRdi2T0ZokVqOnJS5MptsHfqh8ZSePKYY+jU1nAQbZ9Pmp72kc/6tH9qZQ5eqYUcK1owKtEYI+aQ==",
+  "dgSpecHash": "9ntXaC8ttdcXNDSnEY9bp32H64M4rJHON0QNavcyQ7rTFBn4jUnDFvAJ1kqjeRW6X5XMWherfRipiEAxjDU3RA==",
   "success": true,
   "projectFilePath": "U:\\Projects\\FEChapterRando\\FEChapterRando\\FEChapterRando.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\esahi\\.nuget\\packages\\yamldotnet\\13.5.2\\yamldotnet.13.5.2.nupkg.sha512"
+  ],
   "logs": []
 }
