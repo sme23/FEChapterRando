@@ -28,8 +28,24 @@ namespace FEChapterRando
         {
             //this is the button that does the randomization
             RandomizerEngine randomizer = new RandomizerEngine(settings);
-            randomizer.Randomize();
+            int randomizationSuccess = randomizer.Randomize(); //does the randomization, returns -1 if there's an issue
+            if (randomizationSuccess == -1)
+            {
+                Console.WriteLine("An error was encountered during randomization. Exiting.");
+                return;
+            }
+            string[] outputFile = randomizer.GenerateOutputFile(); //returns the output file to give the backend
 
+            string backendPath = Directory.GetCurrentDirectory() + "\\Backend\\RandomizerOutput.event";
+            FileStream ofile = File.Create(backendPath);
+            foreach (string line in outputFile)
+            {
+                byte[] buffer = new UTF8Encoding(true).GetBytes(line);
+                ofile.Write(buffer, 0, buffer.Length);
+            }
+            ofile.Close();
+
+            //file successfully written
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -37,7 +53,7 @@ namespace FEChapterRando
             //init the collection of available chapter modules from CWD\Backend\Modules\Chapter
             //including subdirectories for sorting reasons; we're looking for a folder with a ChapterModule.yaml in it, otherwise we look in its subfolders
 
-            string baseDir = Directory.GetCurrentDirectory() + "\\Backend\\Modules\\Chapters";
+            string baseDir = Directory.GetCurrentDirectory() + "\\Backend\\Modules\\Chapter";
 
             ArrayList modulePaths = new ArrayList();
             ArrayList folderCheckQueue = new ArrayList();
@@ -67,14 +83,11 @@ namespace FEChapterRando
 
             foreach (string path in modulePaths)
             {
-                FileStream file = File.Open(path+"\\ChapterModule.yaml", FileMode.Open);
-                Span<byte> buffer = new Span<byte>();
-                file.Read(buffer);
-                string yaml = Encoding.ASCII.GetString(buffer.ToArray());
+                string yaml = File.ReadAllText(path + "\\ChapterModule.yaml");
+                
                 DataClasses.ChapterModule chapter = des.Deserialize<DataClasses.ChapterModule>(yaml);
                 chapter.filePath = path;
                 allChapters.Add(chapter);
-                file.Close();
             }
 
             //default settings to all chapters selected

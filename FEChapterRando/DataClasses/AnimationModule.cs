@@ -8,9 +8,8 @@ namespace FEChapterRando.DataClasses
     {
         public string animationID = "";
 
-        public AnimationModule(string id)
+        public AnimationModule()
         {
-            animationID = id;
         }
     }
 }

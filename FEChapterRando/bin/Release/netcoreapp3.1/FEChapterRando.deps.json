@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "FEChapterRando/1.0.0": {
+        "dependencies": {
+          "YamlDotNet": "13.5.2"
+        },
+        "runtime": {
+          "FEChapterRando.dll": {}
+        }
+      },
+      "YamlDotNet/13.5.2": {
+        "runtime": {
+          "lib/netstandard2.1/YamlDotNet.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.5.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FEChapterRando/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "YamlDotNet/13.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HN+06WB25/yRiQYNansO5sHsNFYIHDaiquvfYOw5DQ4XWArlDtZxxsvll7eS7W3jzXZXeo/crfOnLpD0tXZkGw==",
+      "path": "yamldotnet/13.5.2",
+      "hashPath": "yamldotnet.13.5.2.nupkg.sha512"
+    }
+  }
+}

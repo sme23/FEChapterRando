@@ -8,12 +8,11 @@ namespace FEChapterRando.DataClasses
     class MapModule : Module
     {
         public string mapID = "";
+        public int mapChanges = -1;
         public ArrayList mapResourceIDs = new ArrayList();
 
-        public MapModule(string id, CollectionBase mapResources)
+        public MapModule()
         {
-            mapID = id;
-            mapResourceIDs.AddRange(mapResources);
         }
     }
 }

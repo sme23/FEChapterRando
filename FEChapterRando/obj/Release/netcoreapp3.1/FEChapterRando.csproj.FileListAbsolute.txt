@@ -1,0 +1,17 @@
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.exe
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.deps.json
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.runtimeconfig.json
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.runtimeconfig.dev.json
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.dll
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\FEChapterRando.pdb
+U:\Projects\FEChapterRando\FEChapterRando\bin\Release\netcoreapp3.1\YamlDotNet.dll
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.MainForm.resources
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.csproj.GenerateResource.cache
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.GeneratedMSBuildEditorConfig.editorconfig
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.AssemblyInfoInputs.cache
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.AssemblyInfo.cs
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.csproj.CoreCompileInputs.cache
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.csproj.CopyComplete
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.dll
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.pdb
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.genruntimeconfig.cache

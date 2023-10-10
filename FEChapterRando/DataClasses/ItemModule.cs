@@ -8,9 +8,8 @@ namespace FEChapterRando.DataClasses
     {
         public string itemID = "";
 
-        public ItemModule(string id)
+        public ItemModule()
         {
-            itemID = id;
         }
     }
 }

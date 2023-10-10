@@ -12,17 +12,13 @@ namespace FEChapterRando.DataClasses
 
         public string chapterID = "";
         public int chapterNumber = -1;
+        public int chapterEvents = -1;
         public ArrayList characterModuleIDs = new ArrayList();
         public ArrayList classModuleIDs = new ArrayList();
         public ArrayList itemModuleIDs = new ArrayList();
 
-        public ChapterModule(string id, int number, CollectionBase characterModules, CollectionBase classModules, CollectionBase itemModules)
+        public ChapterModule()
         {
-            chapterID = id;
-            chapterNumber = number;
-            characterModuleIDs.AddRange(characterModules);
-            classModuleIDs.AddRange(classModules);
-            itemModuleIDs.AddRange(itemModules);
         }
 
     }

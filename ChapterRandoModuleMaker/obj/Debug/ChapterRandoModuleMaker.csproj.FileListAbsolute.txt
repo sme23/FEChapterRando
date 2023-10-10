@@ -1,0 +1,10 @@
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\obj\Debug\ChapterRandoModuleMaker.csproj.AssemblyReference.cache
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\obj\Debug\ChapterRandoModuleMaker.csproj.CoreCompileInputs.cache
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\bin\Debug\ChapterRandoModuleMaker.exe.config
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\bin\Debug\ChapterRandoModuleMaker.exe
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\bin\Debug\ChapterRandoModuleMaker.pdb
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\bin\Debug\YamlDotNet.dll
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\bin\Debug\YamlDotNet.xml
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\obj\Debug\ChapterRandoModuleMaker.csproj.CopyComplete
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\obj\Debug\ChapterRandoModuleMaker.exe
+U:\Projects\FEChapterRando\ChapterRandoModuleMaker\obj\Debug\ChapterRandoModuleMaker.pdb

@@ -8,14 +8,12 @@ namespace FEChapterRando.DataClasses
     class CharacterModule : Module
     {
         public string characterID = "";
+        public string type = "";
         public ArrayList animationModuleIDs = new ArrayList();
         public ArrayList supportPairs = new ArrayList();
 
-        public CharacterModule(string id, CollectionBase animationModules, CollectionBase supports)
+        public CharacterModule()
         {
-            characterID = id;
-            animationModuleIDs.AddRange(animationModules);
-            supportPairs.AddRange(supports);
         }
 
     }

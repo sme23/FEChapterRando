@@ -10,12 +10,10 @@ namespace FEChapterRando.DataClasses
         public string classID = "";
         public ArrayList animationModuleIDs = new ArrayList();
         public ArrayList promotionItems = new ArrayList();
+        public ArrayList promotionClasses = new ArrayList();
 
-        public ClassModule(string id, CollectionBase animationModules, CollectionBase promoItems)
+        public ClassModule()
         {
-            classID = id;
-            animationModuleIDs.AddRange(animationModules);
-            promotionItems.AddRange(promoItems);
         }
 
     }
