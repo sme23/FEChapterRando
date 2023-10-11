@@ -27,6 +27,9 @@ namespace FEChapterRando
         private void StartRandomization_Click(object sender, EventArgs e)
         {
             //this is the button that does the randomization
+            ArrayList chapterSettingsBackup = new ArrayList();
+            chapterSettingsBackup.AddRange(settings.chapterSet);
+            
             RandomizerEngine randomizer = new RandomizerEngine(settings);
             int randomizationSuccess = randomizer.Randomize(); //does the randomization, returns -1 if there's an issue
             if (randomizationSuccess == -1)
@@ -46,6 +49,8 @@ namespace FEChapterRando
             ofile.Close();
 
             //file successfully written
+
+            settings.chapterSet = chapterSettingsBackup;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

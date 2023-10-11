@@ -286,18 +286,38 @@ namespace FEChapterRando
             //gather up a list of all of the resources we'll need and their locations, for use when constructing the installer; all used resources are downstream from chapter modules
             ArrayList localModules = new ArrayList();
             localModules.AddRange(chapters);
+            ArrayList localModulesMirror = new ArrayList();
+            localModulesMirror.AddRange(localModules);
 
-            foreach (ChapterModule chapter in chapters)
+            foreach (ChapterModule chapter in localModulesMirror)
             {
                 //get the submodules of the chapter module
                 localModules.AddRange(gatherSubmodules(chapter.filePath));
             }
 
-            //check each item in localModules for referenced modules not already in localModules
 
-            for (int i = 0; i < localModules.Count; i++) 
+            //remove all duplicate modules 
+            ArrayList check = new ArrayList();
+            localModulesMirror = new ArrayList();
+            localModulesMirror.AddRange(localModules);
+            foreach (Module module in localModulesMirror)
             {
-                Module module = (Module)localModules[i];
+                Tuple<Type, int> mod = new Tuple<Type, int>(module.GetType(), module.moduleID);
+                if (check.Contains(mod)) 
+                {
+                    localModules.Remove(module);
+                } else
+                {
+                    check.Add(mod);
+                }
+            }
+
+
+            //check each item in localModules for referenced modules not already in localModules & sort them
+
+            for (int i = 0; i < localModules.Count; i++)
+            {
+                var module = localModules[i];
                 //no, C# does not support switch statements on type
                 if (module is ChapterModule)
                 {
@@ -306,6 +326,7 @@ namespace FEChapterRando
                     ChapterModule chmod = (ChapterModule)module;
                     chapterReferences.AddRange(chmod.classModuleIDs);
                     chapterReferences.AddRange(chmod.itemModuleIDs);
+                    chapterReferences.AddRange(chmod.characterModuleIDs);
                     localModules.AddRange(gatherResourceModules(chapterReferences));
                     chapterModuleSet.Add(chmod);
                 }
@@ -356,6 +377,7 @@ namespace FEChapterRando
                 }
             }
 
+
             //all local modules have been checked, we now have sorted lists of all modules we are using
             //now we need to enumerate each entry in each list, but first let's check bounds on each list's size
 
@@ -387,7 +409,7 @@ namespace FEChapterRando
                 Console.Error.WriteLine("ERROR: Too many chapters, " + chapterModuleSet.Count + " needed but only 126 slots, How did you accomplish this");
                 return -1;
             }
-            if (mapModuleSet.Count*2 + chapterModuleSet.Count + resourceModuleSet.Count > 256)
+            if (mapModuleSet.Count * 2 + chapterModuleSet.Count + resourceModuleSet.Count > 256)
             {
                 //error: too many plist entries
                 Console.Error.WriteLine("ERROR: Too many unique chapter elements, " + (mapModuleSet.Count * 2 + chapterModuleSet.Count + resourceModuleSet.Count) + " needed but only 256 slots");
@@ -465,7 +487,7 @@ namespace FEChapterRando
             }
 
             //now we do them sequentially in order
-            j = 0;
+            j = 1;
             foreach (CharacterModule character in playerChars)
             {
                 character.moduleID = j;
@@ -485,7 +507,7 @@ namespace FEChapterRando
             //remaining are animation - map - resource
             //start with animation since that's simple enough
 
-            j = 0;
+            j = 1;
             foreach (AnimationModule anim in animationModuleSet)
             {
                 anim.moduleID = j;
@@ -493,7 +515,7 @@ namespace FEChapterRando
             }
 
             //maps, resources, and chapters are all tied together: maps get 2, resources and chapters get 1. this is for the event pointer table
-            j = 0;
+            j = 1;
             foreach (MapModule map in mapModuleSet)
             {
                 map.moduleID = j;
@@ -511,7 +533,7 @@ namespace FEChapterRando
                 resource.moduleID = j;
                 j++;
             }
-            
+
             //everything now has IDs assigned to them, we're done in this function
 
             return 0;
@@ -524,7 +546,7 @@ namespace FEChapterRando
             ArrayList resourceModules = gatherAllResourceModules();
             ArrayList pickedModules = new ArrayList();
 
-            foreach (Object module in resourceModules)
+            foreach (var module in resourceModules)
             {
                 //once again, no, switch statement wouldn't work
                 if (module is ClassModule)
@@ -542,6 +564,11 @@ namespace FEChapterRando
                 {
                     ResourceModule remod = (ResourceModule)module;
                     if (moduleIDs.Contains(remod.resourceID)) pickedModules.Add(remod);
+                }
+                if (module is AnimationModule)
+                {
+                    AnimationModule animod = (AnimationModule)module;
+                    if (moduleIDs.Contains(animod.animationID)) pickedModules.Add(animod);
                 }
             }
 
@@ -575,12 +602,49 @@ namespace FEChapterRando
                 //get the yaml in this filepath
                 string[] yamls = Directory.GetFiles(path, "*.yaml");
                 //this should always be size 1 so we can just reference index 0 of the array
-                FileStream file = File.OpenRead(yamls[0]);
-                Span<byte> buffer = new Span<byte>();
-                file.Read(buffer);
-                string yaml = Encoding.ASCII.GetString(buffer.ToArray());
-                modules.Add(des.Deserialize(yaml));
-                file.Close();
+                string yaml = File.ReadAllText(yamls[0]);
+                string fileName = yamls[0].Substring(yamls[0].LastIndexOf('\\')+1);
+                switch (fileName)
+                {
+                    case "ChapterModule.yaml":
+                        ChapterModule mod1 = des.Deserialize<ChapterModule>(yaml);
+                        mod1.filePath = path;
+                        modules.Add(mod1);
+                        break;
+                    case "CharacterModule.yaml":
+                        CharacterModule mod2 = des.Deserialize<CharacterModule>(yaml);
+                        mod2.filePath = path;
+                        modules.Add(mod2);
+                        break;
+                    case "ClassModule.yaml":
+                        ClassModule mod3 = des.Deserialize<ClassModule>(yaml);
+                        mod3.filePath = path;
+                        modules.Add(mod3);
+                        break;
+                    case "ItemModule.yaml":
+                        ItemModule mod4 = des.Deserialize<ItemModule>(yaml);
+                        mod4.filePath = path;
+                        modules.Add(mod4);
+                        break;
+                    case "MapModule.yaml":
+                        MapModule mod5 = des.Deserialize<MapModule>(yaml);
+                        mod5.filePath = path;
+                        modules.Add(mod5);
+                        break;
+                    case "AnimationModule.yaml":
+                        AnimationModule mod6 = des.Deserialize<AnimationModule>(yaml);
+                        mod6.filePath = path;
+                        modules.Add(mod6);
+                        break;
+                    case "ResourceModule.yaml":
+                        ResourceModule mod7 = des.Deserialize<ResourceModule>(yaml);
+                        mod7.filePath = path;
+                        modules.Add(mod7);
+                        break;
+                    default: //false positive
+                        break;
+                }
+                
             }
             return modules;
         }
@@ -591,7 +655,7 @@ namespace FEChapterRando
             ArrayList submodules = new ArrayList();
 
             ArrayList folderQueue = new ArrayList();
-            folderQueue.Add(modulePath); //already done in the loop
+            folderQueue.Add(modulePath); //not already done in the loop
 
             while (folderQueue.Count != 0)
             {
