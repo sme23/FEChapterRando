@@ -15,3 +15,4 @@ U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRan
 U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.dll
 U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.pdb
 U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.genruntimeconfig.cache
+U:\Projects\FEChapterRando\FEChapterRando\obj\Release\netcoreapp3.1\FEChapterRando.csproj.AssemblyReference.cache

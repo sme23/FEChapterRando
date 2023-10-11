@@ -219,31 +219,31 @@ namespace FEChapterRando
             outputFile.Add("\n\n//Module Includes\n");
             foreach (ChapterModule chapter in chapterModuleSet)
             {
-                outputFile.Add("#include \"" + chapter.filePath.Substring(cullLength) + "ChapterInstaller.event\"\n");
+                outputFile.Add("#include \"" + chapter.filePath.Substring(cullLength) + "\\ChapterInstaller.event\"\n");
             }
             foreach (CharacterModule character in characterModuleSet)
             {
-                outputFile.Add("#include \"" + character.filePath.Substring(cullLength) + "CharacterInstaller.event\"\n");
+                outputFile.Add("#include \"" + character.filePath.Substring(cullLength) + "\\CharacterInstaller.event\"\n");
             }
             foreach (ClassModule classmod in classModuleSet)
             {
-                outputFile.Add("#include \"" + classmod.filePath.Substring(cullLength) + "ClassInstaller.event\"\n");
+                outputFile.Add("#include \"" + classmod.filePath.Substring(cullLength) + "\\ClassInstaller.event\"\n");
             }
             foreach (ItemModule item in itemModuleSet)
             {
-                outputFile.Add("#include \"" + item.filePath.Substring(cullLength) + "ItemInstaller.event\"\n");
+                outputFile.Add("#include \"" + item.filePath.Substring(cullLength) + "\\ItemInstaller.event\"\n");
             }
             foreach (MapModule map in mapModuleSet)
             {
-                outputFile.Add("#include \"" + map.filePath.Substring(cullLength) + "MapInstaller.event\"\n");
+                outputFile.Add("#include \"" + map.filePath.Substring(cullLength) + "\\MapInstaller.event\"\n");
             }
             foreach (AnimationModule anim in animationModuleSet)
             {
-                outputFile.Add("#include \"" + anim.filePath.Substring(cullLength) + "AnimationInstaller.event\"\n");
+                outputFile.Add("#include \"" + anim.filePath.Substring(cullLength) + "\\AnimationInstaller.event\"\n");
             }
             foreach (ResourceModule resource in resourceModuleSet)
             {
-                outputFile.Add("#include \"" + resource.filePath.Substring(cullLength) + "ResourceInstaller.event\"\n");
+                outputFile.Add("#include \"" + resource.filePath.Substring(cullLength) + "\\ResourceInstaller.event\"\n");
             }
             outputFile.Add("\n//END OF FILE\n");
 
@@ -591,7 +591,7 @@ namespace FEChapterRando
             ArrayList submodules = new ArrayList();
 
             ArrayList folderQueue = new ArrayList();
-            //folderQueue.Add(modulePath); //already done in the loop
+            folderQueue.Add(modulePath); //already done in the loop
 
             while (folderQueue.Count != 0)
             {
